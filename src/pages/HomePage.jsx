@@ -13,8 +13,8 @@ export default function HomePage() {
 
   return (
     <>
-      <h1>Home</h1>
-      <ul>
+      <h1 className="px-8 py-4">Home</h1>
+      <ul className="px-8 list-disc">
         {movies.map((movie) => (
           <li key={movie.id}> {movie.title}</li>
         ))}

@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import Container from "../components/ui/Container";
 import Heading from "../components/ui/Heading";
 import Review from "../components/ui/Review";
+import FormAddReview from "../components/FormAddReview";
 
 export default function MoviePage() {
   const [movie, setMovie] = useState({ review: [] });
@@ -13,7 +14,6 @@ export default function MoviePage() {
   const fetchMovie = () => {
     axios.get(`/movies/${id}`).then((res) => {
       setMovie(res.data);
-      console.log(res.data);
     });
   };
 
@@ -45,6 +45,9 @@ export default function MoviePage() {
               </li>
             ))}
           </ul>
+        </div>
+        <div className="bg-slate-800 text-white rounded-xl mt-6 shadow p-4 ">
+          <FormAddReview fetchMovies={fetchMovie}></FormAddReview>
         </div>
       </Container>
     </div>

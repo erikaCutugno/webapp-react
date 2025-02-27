@@ -41,13 +41,14 @@ export default function FormAddReview({ fetchMovies }) {
             Nome
           </label>
           <input
-            className="w-full border border-slate-600 p-2 rounded-sm"
+            className="w-full border border-slate-700 p-2 rounded-sm"
             id="name"
             name="name"
             type="text"
             placeholder="Inserisci il tuo nome"
             value={formData.name}
             onChange={(e) => handleField("name", e.target.value)}
+            required
           ></input>
         </div>
         <div>
@@ -55,7 +56,7 @@ export default function FormAddReview({ fetchMovies }) {
             Vote
           </label>
           <input
-            className="w-full border border-slate-600 p-2 rounded-sm"
+            className="w-full border border-slate-700 p-2 rounded-sm"
             id="vote"
             name="vote"
             type="number"
@@ -64,6 +65,7 @@ export default function FormAddReview({ fetchMovies }) {
             max={5}
             value={formData.vote}
             onChange={(e) => handleField("vote", e.target.value)}
+            required
           ></input>
         </div>
         <div>
@@ -71,7 +73,7 @@ export default function FormAddReview({ fetchMovies }) {
             Recensione
           </label>
           <textarea
-            className="w-full border border-slate-600 p-2 rounded-sm"
+            className="w-full border border-slate-700 p-2 rounded-sm"
             id="text"
             type="text"
             name="text"
@@ -79,6 +81,7 @@ export default function FormAddReview({ fetchMovies }) {
             rows={5}
             value={formData.text}
             onChange={(e) => handleField("text", e.target.value)}
+            required
           ></textarea>
         </div>
         <div className="text-center mt-6">

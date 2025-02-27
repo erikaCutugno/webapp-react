@@ -7,7 +7,7 @@ export default function DefaultLayout() {
   return (
     <>
       <Header />
-      <main className="h-dvh">
+      <main>
         <Outlet />
       </main>
       <Footer />

@@ -5,8 +5,7 @@ import DefaultLayout from "./layout/DefaultLayout";
 import HomePage from "./pages/HomePage";
 import MoviePage from "./pages/MoviePage";
 import PageNotFound from "./pages/PageNotFound";
-import CreateMovie from "./pages/CreateMovie";
-import DestroyMovie from "./pages/DestroyMovie";
+import Admin from "./pages/Admin";
 
 export default function App() {
   return (
@@ -15,8 +14,7 @@ export default function App() {
         <Route element={<DefaultLayout />}>
           <Route index path="/" element={<HomePage />} />
           <Route path="/movies/:id" element={<MoviePage />} />
-          <Route path="/movies/create" element={<CreateMovie />} />
-          <Route path="/movies/destroy" element={<DestroyMovie />} />
+          <Route path="/movies/admin" element={<Admin />} />
           <Route path="*" element={<PageNotFound />} />
         </Route>
       </Routes>

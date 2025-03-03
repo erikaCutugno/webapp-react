@@ -6,11 +6,8 @@ export default function Header() {
       <Link to="/">
         <Heading level={1}>Movies 138</Heading>
       </Link>
-      <NavLink to="/movies/create" className="hover:text-rose-700">
-        <Heading level={4}>Crea Film</Heading>
-      </NavLink>
-      <NavLink to="/movies/destroy" className="hover:text-rose-700">
-        <Heading level={4}>Cancella Film</Heading>
+      <NavLink to="/movies/admin" className="hover:text-rose-700">
+        <Heading level={4}>Admin</Heading>
       </NavLink>
     </header>
   );

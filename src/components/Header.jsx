@@ -9,6 +9,9 @@ export default function Header() {
       <NavLink to="/movies/create" className="hover:text-rose-700">
         <Heading level={4}>Crea Film</Heading>
       </NavLink>
+      <NavLink to="/movies/destroy" className="hover:text-rose-700">
+        <Heading level={4}>Cancella Film</Heading>
+      </NavLink>
     </header>
   );
 }

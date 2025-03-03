@@ -2,6 +2,7 @@ export default function Button({
   variant = "primary",
   size = "md",
   children,
+  onClick,
   ...props
 }) {
   const baseStyle = "rounded-sm transition-all cursor-pointer";
@@ -20,6 +21,7 @@ export default function Button({
   return (
     <button
       className={`${baseStyle} ${variants[variant]} ${sizes[size]}`}
+      onClick={onClick}
       {...props}
     >
       {children}

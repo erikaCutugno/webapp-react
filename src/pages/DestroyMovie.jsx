@@ -12,6 +12,12 @@ export default function DestroyMovie() {
       setMovies(res.data);
     });
   };
+
+  const movieDelete = (movieId) => {
+    axios.delete(`/movies/${movieId}`).then(() => {
+      setMovies((current) => current.filter((movie) => movie.id !== movieId));
+    });
+  };
   useEffect(fetchMovies, []);
   return (
     <>
@@ -36,7 +42,7 @@ export default function DestroyMovie() {
                   </td>
                   <td className="border border-slate-600 p-2">{movie.genre}</td>
                   <td className="border border-slate-600 p-2 text-center">
-                    <Button size="sm">
+                    <Button size="sm" onClick={() => movieDelete(movie.id)}>
                       <i className="fa-solid fa-xmark text-lg"></i>
                     </Button>
                   </td>

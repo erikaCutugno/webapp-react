@@ -1,24 +1,36 @@
 import axios from "../api/axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Container from "../components/ui/Container";
 import Heading from "../components/ui/Heading";
 import Review from "../components/ui/Review";
 import FormAddReview from "../components/FormAddReview";
 import Stars from "../components/ui/Stars";
+import { useLoaderContext } from "../../context/LoaderContext";
 
 export default function MoviePage() {
+  const { setIsLoading } = useLoaderContext();
+  const navigate = useNavigate();
   const [movie, setMovie] = useState({ review: [] });
   const { id } = useParams();
 
   const fetchMovie = () => {
-    axios.get(`/movies/${id}`).then((res) => {
-      setMovie(res.data);
-    });
+    setIsLoading(true);
+    axios
+      .get(`/movies/${id}`)
+      .then((res) => {
+        setMovie(res.data);
+      })
+      .catch((err) => {
+        if (err.status === 404) {
+          navigate("/404");
+        }
+      })
+      .finally(() => setIsLoading(false));
   };
 
-  useEffect(fetchMovie, [id]);
+  useEffect(fetchMovie, [id, navigate, setIsLoading]);
   return (
     <div className="p-6">
       <Container size="sm">

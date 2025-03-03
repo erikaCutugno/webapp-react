@@ -3,13 +3,19 @@ import { useEffect, useState } from "react";
 import Card from "../components/ui/Card";
 import Container from "../components/ui/Container";
 import Heading from "../components/ui/Heading";
-
+import { useLoaderContext } from "../../context/LoaderContext";
 export default function HomePage() {
   const [movies, setMovies] = useState([]);
+  const { setIsLoading } = useLoaderContext();
+
   const fetchMovies = () => {
-    axios.get("/movies").then((res) => {
-      setMovies(res.data);
-    });
+    setIsLoading(true);
+    axios
+      .get("/movies/")
+      .then((res) => {
+        setMovies(res.data);
+      })
+      .finally(() => setIsLoading(false));
   };
 
   useEffect(fetchMovies, []);

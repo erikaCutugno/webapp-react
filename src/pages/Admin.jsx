@@ -4,6 +4,7 @@ import Button from "../components/ui/Button";
 import axios from "../api/axios";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
+import { useLoaderContext } from "../../context/LoaderContext";
 
 const initialFormData = {
   title: "",
@@ -15,13 +16,20 @@ const initialFormData = {
 };
 
 export default function Admin() {
+  const { setIsLoading } = useLoaderContext();
+
   //lista film
   const [movies, setMovies] = useState([]);
 
   const fetchMovies = () => {
-    axios.get("/movies").then((res) => {
-      setMovies(res.data);
-    });
+    setIsLoading(true);
+
+    axios
+      .get("/movies")
+      .then((res) => {
+        setMovies(res.data);
+      })
+      .finally(() => setIsLoading(false));
   };
   //delete film
   const movieDelete = (movieId) => {
